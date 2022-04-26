@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Enquiry {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  name         String   @db.VarChar(255)
+  email        String   @db.VarChar(255)
+  priority     String   @db.VarChar(255)
+  assigned_to  String   @db.VarChar(255)
+  status       String   @db.VarChar(255)
+  follow_up    Boolean  @default(false)
+  due_date     String   @db.VarChar(255)
+}
+
